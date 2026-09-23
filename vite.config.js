@@ -8,8 +8,9 @@ export default defineConfig({
         port: 5173,
         proxy: {
             '/api': {
-                target: 'https://hostel-tracker-backend.onrender.com/',
+                target: 'https://hostel-tracker-backend.onrender.com',
                 changeOrigin: true,
+                secure: false,
             },
         },
     },

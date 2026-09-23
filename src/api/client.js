@@ -1,10 +1,20 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Resolve backend API URL (supports Render production deployment, Vercel env, and local dev proxy)
+const getBaseUrl = () => {
+  let url = import.meta.env.VITE_API_URL || 'https://hostel-tracker-backend.onrender.com/api';
+  url = url.trim().replace(/\/+$/, '');
+  if (!url.endsWith('/api') && url !== '') {
+    url = `${url}/api`;
+  }
+  return url;
+};
+
+const API_BASE_URL = getBaseUrl();
 
 const API = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000,
+  timeout: 60000, // 60s timeout to comfortably accommodate Render free-tier cold starts
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -18,6 +28,22 @@ API.interceptors.request.use((config) => {
 }, (error) => {
   return Promise.reject(error);
 });
+
+// Response interceptor: automatically clear expired session on 401
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (
+      error.response?.status === 401 &&
+      !error.config?.url?.includes('/auth/login') &&
+      !error.config?.url?.includes('/auth/register')
+    ) {
+      localStorage.removeItem('ht_token');
+      localStorage.removeItem('ht_user');
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Authentication
 export const loginUser = (credentials) => API.post('/auth/login', credentials);
