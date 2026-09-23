@@ -1,0 +1,37 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shieldTrustGrad" x1="16" y1="12" x2="104" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="45%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="shieldGloss" x1="60" y1="12" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="checkBadgeGrad" x1="72" y1="62" x2="104" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Shield -->
+  <path d="M60 14 C82 14 100 21 103 35 C103 66 84 94 60 106 C36 94 17 66 17 35 C20 21 38 14 60 14 Z" fill="url(#shieldTrustGrad)"/>
+  <path d="M60 17 C80 17 96 23 99 36 C99 64 82 89 60 101 C38 89 21 64 21 36 C24 23 40 17 60 17 Z" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.5"/>
+  <path d="M60 15 C79 15 95 21 98 34 C98 50 88 68 76 78 C70 54 60 30 40 20 C46 16 53 15 60 15 Z" fill="url(#shieldGloss)"/>
+
+  <!-- Building -->
+  <g transform="translate(42, 34)">
+    <rect x="0" y="0" width="36" height="40" rx="5" fill="#FFFFFF"/>
+    <rect x="6" y="7" width="8" height="7" rx="1.5" fill="#4F46E5"/>
+    <rect x="22" y="7" width="8" height="7" rx="1.5" fill="#F59E0B"/>
+    <rect x="6" y="18" width="8" height="7" rx="1.5" fill="#4F46E5"/>
+    <rect x="22" y="18" width="8" height="7" rx="1.5" fill="#4F46E5"/>
+    <rect x="14" y="27" width="8" height="13" rx="2" fill="#4F46E5"/>
+  </g>
+
+  <!-- Circular Checkmark Badge -->
+  <circle cx="88" cy="80" r="18" fill="#070D1A" stroke="#0D1526" stroke-width="2"/>
+  <circle cx="88" cy="80" r="14.5" fill="url(#checkBadgeGrad)"/>
+  <path d="M81.5 80 L86 84.5 L94.5 75.5" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
